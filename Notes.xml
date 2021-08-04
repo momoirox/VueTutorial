@@ -1,0 +1,99 @@
+<package.jason>
+2 scripts 
+24:30
+
+dev server - npm run serve [localhost:8081]
+			 basic landing page
+</package.jason>
+			 
+			 
+<index.html>
+div with the id od app
+	<div id="app"></div>
+</index.html>
+
+
+<main.js>
+- an entry point to vue [imports]
+- import App from './App.vue' - root app component
+- pass App component and mount to div id = 'app'
+</main.js>
+
+<App.vue>
+
+-root component
+-any components are embeded here
+-template script style
+
+<!-- Import and Define -->
+<script>
+<!-- Import -->
+import HelloWorld from './components/HelloWorld.vue'
+
+export default {
+  name: 'App', <!-- defined -->
+  components: {
+    HelloWorld
+  }
+}
+</script>
+<!-- Usage -->
+<template>
+ <HelloWorld msg="Tutorial 1 Vue JS"/>
+</template>
+
+</App.vue>
+
+Enabling Emmet
+
+"emmet.includeLanguages": { 
+        "vue-html": "html",
+        "vue": "html",
+        "javascript": "html"
+    }
+	
+	
+We can eather put components in <template>
+or we  can make component.vue
+	//////////!!!!!!!!
+Lyfe cycle method
+http requests to load data
+dreated lyfe cycleW
+Fake backend fake rest api fake Jason server.
+Data in app.vue ?????????????? 36:00
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+
+
+
+<li v-for="post in posts" v-bind:key="post.id">
+
+<!-- OR USE SHORTCUT NOTATION -->
+<li v-for="post in posts" :key="post.id">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
