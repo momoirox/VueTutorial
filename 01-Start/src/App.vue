@@ -1,8 +1,10 @@
 <template>
   <div class="container">
     <h1>こうにちわ</h1>
-    <Header title="Task Tracer" />
-    <AddTask/>
+    <Header @toggle-add-task="toggleAddTask" title="Task Tracer" :showAddTask="showAddTask" />
+    <div v-if="showAddTask" > <!-- v-show -->
+    <AddTask @add-task="addTask"/>
+    </div>
     <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks" /> <!-- Tasks.tasks = this.tasks  passing in array-->
   </div>
 </template>
@@ -19,25 +21,37 @@ export default {
     Header,
     Tasks,
     AddTask
+    
 
   },
 
   data(){ //function that returns object
     return {
-      tasks: [] //an empty array
+      tasks: [] ,//an empty array
+      showAddTask : false
     }
   },
   methods:{
 
+    toggleAddTask(){
+
+      this.showAddTask = !this.showAddTask
+    },
+
+    addTask(task){
+     // this.tasks = [...this.tasks,task]
+      this.tasks.push(task)
+    },
 
     deleteTask(id){
       if(confirm('Are you sure ?')){
         this.tasks = this.tasks.filter((task) => task.id !== id)
-        //We want all back except from the task with the passed id
+       
+     //We want all back except from the task with the passed id
       }
     },
     toggleReminder(id){
-      this.tasks = this.tasks.map((task)=> task.id == id ? {...task,reminder : !task.reminder} : task)
+      this.tasks = this.tasks.map((task)=> task.id === id ? {...task, reminder : !task.reminder} : task)
       // for each task check to se if task.id == id 
       // true return array of objects and change remindet to oposite of current task reminder
       // false we return initial task

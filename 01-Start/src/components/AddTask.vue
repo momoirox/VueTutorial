@@ -3,16 +3,16 @@
     <div class="form-control">
       <label class="label-control">Task</label>
     
-      <input type="text" v-model="name" placeholder="Edit me" name="text"  />
+      <input type="text" v-model="text" name="text" placeholder="Add Task"   />
   
     </div>
     <div class="form-control" >
       <label>Day & Time</label>
-      <input type="text"  name="day" />
+      <input type="text" v-model="day" name="day" placeholder="Add Day & Time" />
     </div>
-    <div class="form-control" >
+    <div class="form-control form-control-check" >
       <label>Set Reminder</label>
-      <input type="checkbox"  name="reminder" />
+      <input type="checkbox" v-model="reminder"  name="reminder" />
     </div>
 
     <input type="submit" value="Save Task" class="btn btn-block" />
@@ -21,29 +21,66 @@
 <script>
 export default {
     name: 'AddTask',
-    props:{
-        name:String,
-    },
+     data() {
+    return {            //data returns an object 
+      text: '',          // V-MODEL binds data to input 
+      day: '',
+      reminder: false,
+    }
+  },
     methods:{
         onSubmit(e){
 
             e.preventDefault()
-            console.log("Submitted");
+
+            if(!this.text){
+              alert('Please add a task')
+              return
+            }
+            const newTask={
+                id : Math.floor(Math.random()*100000),
+                text: this.text,
+                day: this.day,
+                reminder: this.reminder
+            }
+            this.$emit('add-task',newTask);
+           this.text='',
+           this.day='',
+           this.reminder = false
         }
     }
     
 }
 </script>
 
-<style >
-label{
-    margin: 0 30px 0 0;
-}
+<style scoped>
 .add-form {
   margin-bottom: 40px;
 }
 .form-control {
-  margin: 20px 0px;
+  margin: 20px 0;
+}
+.form-control label {
+  display: block;
+}
+.form-control input {
+  width: 100%;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 7px;
+  font-size: 17px;
+}
+.form-control-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-control-check label {
+  flex: 1;
+}
+.form-control-check input {
+  flex: 2;
+  height: 20px;
 }
 </style>
 
