@@ -13,6 +13,18 @@
          <input type="text" v-on:keyup.enter ="logName"/>
          <label>Age:</label>
          <input type="text" v-on:keyup.alt.enter ="logAge"/>
+         <br>
+         <h1>Two way data binding</h1>
+         <div id="canvas2" >
+
+        <label>Name:</label>
+        <span>{{name}}</span>
+         <input type="text" v-model="name" />
+         <label>Age:</label>
+         <span>{{age}}</span>
+         <input type="text" v-model="age"/>
+
+         </div>
 
 
         </div>

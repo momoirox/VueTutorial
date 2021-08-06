@@ -4,3 +4,9 @@
     text-align: center;
     border: 1px solid #333;
 }
+#canvas2{
+    width: 600px;
+    padding: 200px 20px;
+    text-align:start;
+    border: 1px solid #333;
+}
